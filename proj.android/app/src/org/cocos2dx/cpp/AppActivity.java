@@ -24,11 +24,16 @@ THE SOFTWARE.
 ****************************************************************************/
 package org.cocos2dx.cpp;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
+import android.widget.Toast;
+
 import org.cocos2dx.lib.Cocos2dxActivity;
 
 public class AppActivity extends Cocos2dxActivity {
 
+    static Activity self;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.setEnableVirtualButton(false);
@@ -42,7 +47,17 @@ public class AppActivity extends Cocos2dxActivity {
             return;
         }
         // DO OTHER INITIALIZATION BELOW
-        
+
+        self = this;
     }
 
+    public static void showToast(String message) {
+      self.runOnUiThread(new Runnable() {
+          @Override
+          public void run() {
+              Toast.makeText(self, message, Toast.LENGTH_SHORT).show();
+
+          }
+      });
+        }
 }

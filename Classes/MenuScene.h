@@ -15,11 +15,14 @@ public:
 static cocos2d::Scene* createScene();
 virtual bool init();
 
-// implement the "static create()" method manually
 CREATE_FUNC(MenuScene);
 
-void onPlayButtonClicked(Ref* sender);
-void onSettingsButtonClicked(Ref* sender);
+
+    Sprite* titleImage;
+
+    void onPlayButtonClicked(Ref* sender);
+    void onSettingsButtonClicked(Ref* sender);
+
 };
 
 #endif //PROJ_ANDROID_MENUSCENE_H
